@@ -6,7 +6,7 @@
 #    By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/27 20:27:52 by jaguillo          #+#    #+#              #
-#    Updated: 2015/02/27 20:31:24 by jaguillo         ###   ########.fr        #
+#    Updated: 2015/02/27 21:41:21 by wide-aze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ C_DIR = srcs
 O_DIR = o
 
 # GCC flags
-LINKS = -I$(H_DIR) -Ilibft/ -Llibft/ -lft
+LINKS = -I$(H_DIR) -Ilibft/ -Llibft/ -lft -lncurses
 
 FLAGS = -Wall -Wextra -Werror -O2
 DEBUG_FLAGS = -Wall -Wextra -g -D DEBUG_MODE

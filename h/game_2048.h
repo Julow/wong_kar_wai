@@ -6,12 +6,14 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/27 20:30:20 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/27 21:40:28 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_2048_H
 # define GAME_2048_H
+
+#include <ncurses.h>
 
 enum			e_const
 {
