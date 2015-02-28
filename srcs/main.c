@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 12:10:41 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 16:21:16 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int				main(void)
 	handle_resize(&env);
 	update_size(&env);
 	init_ncurses();
-	start_menu(&env);
+	//start_menu(&env);
+	init_game(&env, 4); // tmp
 	endwin();
 	return (0);
 }

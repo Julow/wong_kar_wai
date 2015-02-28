@@ -6,7 +6,7 @@
 #    By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/27 20:27:52 by jaguillo          #+#    #+#              #
-#    Updated: 2015/02/27 21:41:21 by wide-aze         ###   ########.fr        #
+#    Updated: 2015/02/28 16:43:49 by jaguillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,9 @@ DEBUG_FLAGS = -Wall -Wextra -g -D DEBUG_MODE
 
 # Dirs containing a Makefile to execute (all, clean and fclean)
 MAKES = libft/
+
+# Libft config
+export FT_CONFIG = -D EMAL_ALL
 
 #
 # Internal

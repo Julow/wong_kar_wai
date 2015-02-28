@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 12:22:14 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 16:50:16 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ typedef struct	s_env
 	t_game			game;
 }				t_env;
 
+# define WPUT(x,y,f,...)	wmove(stdscr, x, y), printw(f, ##__VA_ARGS__)
+
+# define MAP_GET(e,x,y)		(env->game.map[(y)][(x)])
+
 /*
 ** start_menu.c
 */
@@ -42,7 +46,7 @@ void			start_menu(t_env *env);
 /*
 ** init_game.c
 */
-void			init_game(int size);
+void			init_game(t_env *env, int size);
 
 /*
 ** game.c
@@ -68,5 +72,7 @@ void			update_size(t_env *env);
 */
 int				ft_rand(int min, int max);
 t_bool			ft_randbool(void);
+
+int				ft_itoab(int n, char *buff);
 
 #endif

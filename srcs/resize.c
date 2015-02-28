@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rand.c                                             :+:      :+:    :+:   */
+/*   resize.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/28 12:18:24 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 15:17:22 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/02/28 15:00:55 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/02/28 15:18:48 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
-#include <time.h>
-#include <stdlib.h>
+#include <ncurses.h>
+#include <signal.h>
 
-int				ft_rand(int min, int max)
+t_env			*g_save = NULL;
+
+static void		sig_handler(int sig)
 {
-	srand(time(NULL));
-	return (rand() % (max - min) + min);
+	update_size(g_save);
+	draw_game(g_save);
+	(void)sig;
 }
 
-t_bool			ft_randbool(void)
+void			handle_resize(t_env *env)
 {
-	srand(time(NULL));
-	if (rand() % 2 == 0)
-		return (true);
-	return (false);
+	g_save = env;
+	signal(SIGWINCH, &sig_handler);
+}
+
+void			update_size(t_env *env)
+{
+	getmaxyx(stdscr, env->height, env->width);
 }
