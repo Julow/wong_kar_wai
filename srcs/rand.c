@@ -6,27 +6,13 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:18:24 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 18:47:38 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 19:41:14 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 #include <time.h>
 #include <stdlib.h>
-
-int				ft_rand(int min, int max)
-{
-	srand(time(NULL));
-	return (rand() % (max - min + 1) + min);
-}
-
-t_bool			ft_randbool(void)
-{
-	srand(time(NULL));
-	if (rand() % 2 == 0)
-		return (true);
-	return (false);
-}
 
 static int		count_void_cases(t_env *env)
 {
@@ -46,6 +32,20 @@ static int		count_void_cases(t_env *env)
 		}	
 	}	
 	return (count);
+}
+
+int				ft_rand(int min, int max)
+{
+	srand(time(NULL));
+	return (rand() % (max - min + 1) + min);
+}
+
+t_bool			ft_randbool(void)
+{
+	srand(time(NULL));
+	if (rand() % 2 == 0)
+		return (true);
+	return (false);
 }
 
 void			put_rand(t_env *env)
