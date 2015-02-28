@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 12:22:14 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 16:53:16 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ void			init_game(int size);
 ** w
 */
 void			start_game(t_env *env);
+void			put_rand(t_env *env);
+void			action_down(t_env *env);
+void			action_up(t_env *env);
+void			action_left(t_env *env);
+void			action_right(t_env *env);
 
 /*
 ** draw.c
