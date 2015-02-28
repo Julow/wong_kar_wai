@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ncurses.c                                          :+:      :+:    :+:   */
+/*   play_the_game.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/28 11:15:44 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/02/28 12:06:25 by wide-aze         ###   ########.fr       */
+/*   Created: 2015/02/28 11:26:18 by wide-aze          #+#    #+#             */
+/*   Updated: 2015/02/28 11:49:34 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ncurses.h>
-#include <stdlib.h>
+#include "game_2048.h"
+#include <libft.h>
 
-void	init_ncurses(void)
+void	play_the_game(int size)
 {
-	if (WIN_VALUE)
-	{	
-		ft_putendl_fd("", 2);
-		exit(0);
-	}
-	initscr();
-	noecho();
-	keypad(stdscr, TRUE);
-}
+	int		tab[size][size];
 
-void	destroy_ncurses(void)
-{
-	endwin();
-	exit(0);
+	ft_memset((void *)tab, 0, size * size);
+	return;
 }

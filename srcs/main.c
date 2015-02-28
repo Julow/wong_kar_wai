@@ -6,11 +6,12 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 11:24:37 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/02/28 11:48:39 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
+#include <ncurses.h>
 
 static int	start_menu(void)
 {
@@ -47,10 +48,7 @@ int			main(void)
 
 	init_ncurses();
 	size = start_menu();
-
-	(void)size;
-//	play_the_game(size);
-
+	play_the_game(size);
 	destroy_ncurses();
 	return (0);
 }
