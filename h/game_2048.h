@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 11:57:36 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 12:00:31 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 enum			e_const
 {
-	WIN_VALUE = 2048
+	WIN_VALUE = 1024
 };
 
 typedef struct	s_game
