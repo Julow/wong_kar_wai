@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 18:19:54 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 18:58:02 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,12 @@ void			draw_game(t_env *env);
 t_bool			update_size(t_env *env);
 
 /*
-** utils.c
+** utils
 */
 int				ft_rand(int min, int max);
 t_bool			ft_randbool(void);
+
+t_bool			is_power(int nb, int p);
 
 int				ft_itoab(int n, char *buff);
 
