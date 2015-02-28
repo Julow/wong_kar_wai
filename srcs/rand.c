@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:18:24 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 17:04:32 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/02/28 17:42:52 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void			put_rand(t_env *env)
 		while (++j < env->game.size)
 		{
 			if (env->game.map[i][j] == 0)
-				count++;
-			if (count == pos)
+				pos--;
+			if (pos == 0)
 			{
 				env->game.map[i][j] = ft_randbool() ? 4 : 2;
 				return ;

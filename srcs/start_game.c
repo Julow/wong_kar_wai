@@ -6,7 +6,7 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:06:47 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/02/28 17:06:41 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/02/28 17:42:50 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void			start_game(t_env *env)
 			action_right(env);
 		else
 				continue;
+		put_rand(env);
 		draw_game(env);
 	}
 }
