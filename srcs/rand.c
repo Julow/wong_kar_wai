@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rand.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 12:10:41 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/02/28 12:18:24 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/02/28 12:50:03 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
-#include <ncurses.h>
+#include <time.h>
+#include <stdlib.h>
 
-static void		init_ncurses(void)
+int				ft_rand(int min, int max)
 {
-	initscr();
-	noecho();
-	keypad(stdscr, TRUE);
+	return ((srand(time(NULL)) % (max - min)) + min);
 }
 
-int				main(void)
+t_bool			ft_randbool(void)
 {
-	t_env			env;
-
-	handle_resize(&env);
-	update_size(&env);
-	init_ncurses();
-	start_menu(&env);
-	endwin();
-	return (0);
+	if (srand(time(NULL)) % 2 == 0)
+		return (true);
+	return (false);
 }
