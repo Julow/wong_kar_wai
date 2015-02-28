@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_itoab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2015/02/28 16:53:14 by wide-aze         ###   ########.fr       */
-=======
-/*   Updated: 2015/02/28 16:21:16 by jaguillo         ###   ########.fr       */
->>>>>>> 7bab9185989827387f167c514ae715e735c7dfd5
+/*   Created: 2015/02/28 16:49:58 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/02/28 16:50:10 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
-#include <ncurses.h>
 
-static void		init_ncurses(void)
+int				ft_itoab(int n, char *buff)
 {
-	initscr();
-	noecho();
-	keypad(stdscr, TRUE);
-}
+	int				len;
+	int				tmp;
 
-int				main(void)
-{
-	t_env			env;
-
-	handle_resize(&env);
-	update_size(&env);
-	init_ncurses();
-	//start_menu(&env);
-	init_game(&env, 4); // tmp
-	endwin();
-	return (0);
+	len = (n < 0) ? 1 : 0;
+	if (n < 0)
+		*buff = '-';
+	tmp = n;
+	while (tmp != 0)
+	{
+		len++;
+		tmp /= 10;
+	}
+	buff += len;
+	*(buff--) = '\0';
+	while (n != 0)
+	{
+		*(buff--) = '0' + (n % 10);
+		n /= 10;
+	}
+	return (len);
 }

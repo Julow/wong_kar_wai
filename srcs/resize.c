@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   resize.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2015/02/28 16:53:14 by wide-aze         ###   ########.fr       */
-=======
-/*   Updated: 2015/02/28 16:21:16 by jaguillo         ###   ########.fr       */
->>>>>>> 7bab9185989827387f167c514ae715e735c7dfd5
+/*   Created: 2015/02/28 15:00:55 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/02/28 15:18:48 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 #include <ncurses.h>
+#include <signal.h>
 
-static void		init_ncurses(void)
+t_env			*g_save = NULL;
+
+static void		sig_handler(int sig)
 {
-	initscr();
-	noecho();
-	keypad(stdscr, TRUE);
+	update_size(g_save);
+	draw_game(g_save);
+	(void)sig;
 }
 
-int				main(void)
+void			handle_resize(t_env *env)
 {
-	t_env			env;
+	g_save = env;
+	signal(SIGWINCH, &sig_handler);
+}
 
-	handle_resize(&env);
-	update_size(&env);
-	init_ncurses();
-	//start_menu(&env);
-	init_game(&env, 4); // tmp
-	endwin();
-	return (0);
+void			update_size(t_env *env)
+{
+	getmaxyx(stdscr, env->height, env->width);
 }
