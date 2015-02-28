@@ -6,7 +6,7 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:35:44 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/02/28 17:57:15 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 18:29:26 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void		do_action(t_act *act, int **map)
 {
-
+	(void)act;
+	(void)map;
 }
 
 void	action_down(t_env *env)
@@ -26,6 +27,7 @@ void	action_down(t_env *env)
 	act.y = 0;
 	act.prev = 0;
 	do_action(&act, env->map);
+	put_rand(env);
 }
 
 void	action_up(t_env *env)
@@ -37,6 +39,7 @@ void	action_up(t_env *env)
 	act.y = 0;
 	act.prev = 0;
 	do_action(&act, env->map);
+	put_rand(env);
 }
 
 void	action_left(t_env *env)
@@ -48,6 +51,7 @@ void	action_left(t_env *env)
 	act.y = 0;
 	act.prev = 0;
 	do_action(&act, env->map);
+	put_rand(env);
 }
 
 void	action_right(t_env *env)
@@ -59,4 +63,5 @@ void	action_right(t_env *env)
 	act.y = 0;
 	act.prev = 0;
 	do_action(&act, env->map);
+	put_rand(env);
 }

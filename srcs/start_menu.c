@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 11:44:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 16:53:13 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/02/28 18:26:58 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ void			start_menu(t_env *env)
 	choice = 0;
 	while (1)
 	{
+		if (update_size(env))
+			print_menu();
 		choice = getch();
 		if (choice == '1')
 			init_game(env, 4);
 		else if (choice == '2')
 			init_game(env, 5);
-		else
+		else if (choice != 27)
 			continue ;
 		return ;
 	}

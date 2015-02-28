@@ -6,7 +6,7 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:06:47 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/02/28 17:42:50 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/02/28 18:46:43 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ void			start_game(t_env *env)
 			action_left(env);			
 		else if (key == KEY_RIGHT)
 			action_right(env);
-		else
-				continue;
-		put_rand(env);
+		else if (!update_size(env))
+			continue;
 		draw_game(env);
 	}
 }

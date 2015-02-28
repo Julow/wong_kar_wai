@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 17:57:36 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 18:19:54 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ void			draw_game(t_env *env);
 ** resize.c
 ** j
 */
-void			handle_resize(t_env *env);
-void			update_size(t_env *env);
+t_bool			update_size(t_env *env);
 
 /*
 ** utils.c

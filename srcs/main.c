@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 18:04:07 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 18:29:57 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int				main(void)
 	env = (t_env){STATE_IDDLE, NULL, 0, 0, 0, 0};
 	init_ncurses();
 	update_size(&env);
-	handle_resize(&env);
 	start_menu(&env);
+	clear();
+	refresh();
 	endwin();
 	return (0);
 }

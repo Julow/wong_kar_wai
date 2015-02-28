@@ -6,30 +6,24 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:00:55 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 18:07:36 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 18:22:12 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 #include <ncurses.h>
-#include <signal.h>
 
-t_env			*g_save = NULL;
-
-static void		sig_handler(int sig)
+t_bool			update_size(t_env *env)
 {
-	update_size(g_save);
-	draw_game(g_save);
-	(void)sig;
-}
+	int				w;
+	int				h;
 
-void			handle_resize(t_env *env)
-{
-	g_save = env;
-	signal(SIGWINCH, &sig_handler);
-}
-
-void			update_size(t_env *env)
-{
-	getmaxyx(stdscr, env->win_height, env->win_width);
+	getmaxyx(stdscr, h, w);
+	if (h != env->win_height || w != env->win_width)
+	{
+		env->win_width = w;
+		env->win_height = h;
+		return (true);
+	}
+	return (false);
 }
