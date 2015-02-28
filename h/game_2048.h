@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 19:57:55 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/02/28 19:02:59 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,12 @@ typedef struct	s_act
 
 typedef struct	s_env
 {
-	int				state;
 	int				**map;
 	int				map_size;
 	int				score;
 	int				win_width;
 	int				win_height;
 }				t_env;
-
-# define STATE_IDDLE		1
-# define STATE_PLAYING		2
 
 # define WPUT(x,y,f,...)	wmove(stdscr, y, x), printw(f, ##__VA_ARGS__)
 
@@ -79,10 +75,12 @@ void			draw_game(t_env *env);
 t_bool			update_size(t_env *env);
 
 /*
-** utils.c
+** utils
 */
 int				ft_rand(int min, int max);
 t_bool			ft_randbool(void);
+
+t_bool			is_power(int nb, int p);
 
 int				ft_itoab(int n, char *buff);
 
