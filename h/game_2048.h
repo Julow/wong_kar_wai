@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 17:42:13 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 17:57:36 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ typedef enum	e_const
 	WIN_VALUE = 2048
 }				t_const;
 
+typedef struct	s_act
+{
+	int				dir;
+	int				x;
+	int				y;
+	int				prev;
+}				t_act;
+
 typedef struct	s_env
 {
 	int				state;
@@ -30,9 +38,12 @@ typedef struct	s_env
 	int				win_height;
 }				t_env;
 
+# define STATE_IDDLE		1
+# define STATE_PLAYING		2
+
 # define WPUT(x,y,f,...)	wmove(stdscr, y, x), printw(f, ##__VA_ARGS__)
 
-# define MAP_GET(e,x,y)		(env->game.map[(y)][(x)])
+# define MAP_GET(e,x,y)		(env->map[(y)][(x)])
 
 /*
 ** start_menu.c

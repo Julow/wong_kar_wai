@@ -6,7 +6,7 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 11:26:18 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/02/28 17:39:10 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 17:58:07 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@ static void		init_map(t_env *env, int size)
 {
 	int				i;
 
-	env->game.map = MAL(int*, size);
+	env->map = MAL(int*, size);
 	i = -1;
 	while (++i < size)
-		env->game.map[i] = ft_memalloc(S(int, size));
+		env->map[i] = ft_memalloc(S(int, size));
 }
 
 void			init_game(t_env *env, int size)
 {
 	init_map(env, size);
-	env->game.size = size;
-	env->game.score = 0;
+	env->map_size = size;
+	env->score = 0;
+	env->state = STATE_PLAYING;
 	start_game(env);
+	env->state = STATE_IDDLE;
 	return ;
 }

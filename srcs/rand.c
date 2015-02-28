@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:18:24 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 17:04:32 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/02/28 17:58:25 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ static int		count_void_cases(t_env *env)
 
 	count = 0;
 	i = -1;
-	while (++i < env->game.size)
+	while (++i < env->map_size)
 	{
 		j = -1;
-		while (++j < env->game.size)
+		while (++j < env->map_size)
 		{
-			if (env->game.map[i][j] == 0)
+			if (env->map[i][j] == 0)
 				count++;
 		}	
 	}	
@@ -58,16 +58,16 @@ void			put_rand(t_env *env)
 	nb = count_void_cases(env);
 	pos = ft_rand(0, nb);
 	i = -1;
-	while (++i < env->game.size)
+	while (++i < env->map_size)
 	{
 		j = -1;
-		while (++j < env->game.size)
+		while (++j < env->map_size)
 		{
-			if (env->game.map[i][j] == 0)
-				count++;
-			if (count == pos)
+			if (env->map[i][j] == 0)
+				pos--;
+			if (pos == 0)
 			{
-				env->game.map[i][j] = ft_randbool() ? 4 : 2;
+				env->map[i][j] = ft_randbool() ? 4 : 2;
 				return ;
 			}
 		}	

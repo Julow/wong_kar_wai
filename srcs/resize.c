@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:00:55 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 15:18:48 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 18:07:36 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void			handle_resize(t_env *env)
 
 void			update_size(t_env *env)
 {
-	getmaxyx(stdscr, env->height, env->width);
+	getmaxyx(stdscr, env->win_height, env->win_width);
 }

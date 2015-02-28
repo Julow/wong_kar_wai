@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:07:23 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 17:38:47 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 17:55:11 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ void			draw_game(t_env *env)
 	t_pt			i;
 
 	clear();
-	WPUT(0, 0, "Score: %d", env->game.score);
-	cell = RECT(0, 0, env->width / env->game.size,
-		env->height / env->game.size);
+	WPUT(0, 0, "Score: %d", env->score);
+	cell = RECT(0, 0, env->win_width / env->map_size,
+		env->win_height / env->map_size);
 	i.y = -1;
-	while (++i.y < env->game.size)
+	while (++i.y < env->map_size)
 	{
 		cell.y = i.y * cell.height + 1;
 		i.x = -1;
-		while (++i.x < env->game.size)
+		while (++i.x < env->map_size)
 		{
 			cell.x = i.x * cell.width;
 			draw_cell(cell, MAP_GET(env, i.x, i.y));
