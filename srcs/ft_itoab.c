@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:49:58 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 16:50:10 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/28 17:18:05 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,21 @@ int				ft_itoab(int n, char *buff)
 	int				len;
 	int				tmp;
 
-	len = (n < 0) ? 1 : 0;
+	len = (n < 0) ? 2 : 1;
 	if (n < 0)
 		*buff = '-';
+	else if (n == 0)
+		*buff = '0';
 	tmp = n;
-	while (tmp != 0)
-	{
+	while ((tmp /= 10) != 0)
 		len++;
-		tmp /= 10;
-	}
 	buff += len;
 	*(buff--) = '\0';
+	if (n <= 0)
+	{
+		*(buff--) = '0' + (-n % 10);
+		n /= -10;
+	}
 	while (n != 0)
 	{
 		*(buff--) = '0' + (n % 10);

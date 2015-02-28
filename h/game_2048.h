@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 16:58:22 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/02/28 17:42:13 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,17 @@ typedef enum	e_const
 	WIN_VALUE = 2048
 }				t_const;
 
-typedef struct	s_game
-{
-	int				**map;
-	int				size;
-	int				score;
-}				t_game;
-
 typedef struct	s_env
 {
-	int				width;
-	int				height;
-	t_game			game;
+	int				state;
+	int				**map;
+	int				map_size;
+	int				score;
+	int				win_width;
+	int				win_height;
 }				t_env;
 
-# define WPUT(x,y,f,...)	wmove(stdscr, x, y), printw(f, ##__VA_ARGS__)
+# define WPUT(x,y,f,...)	wmove(stdscr, y, x), printw(f, ##__VA_ARGS__)
 
 # define MAP_GET(e,x,y)		(env->game.map[(y)][(x)])
 
