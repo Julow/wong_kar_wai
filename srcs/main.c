@@ -6,24 +6,51 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/27 22:06:57 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/02/28 11:24:37 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** ncurses functions:
-**
-** initsc() : start curses mode
-** printw(char *str) : print a string
-** refresh() : refresh the screen
-** getch() : wait for user input
-*/
-
 #include "game_2048.h"
 
-int				main(int argc, char **argv)
+static int	start_menu(void)
 {
-	(void)argc;
-	(void)argv;
+	int		choice;
+
+	choice = 0;
+	printw("+==================================================+\n"
+		"|_____222222_____0000000_____44__44_____888888_____|\n"
+		"|_________22_____00___00_____44__44_____88__88_____|\n"
+		"|_______22_______00___00_____444444_____888888_____|\n"
+		"|_____22_________00___00_________44_____88__88_____|\n"
+		"|_____222222_____0000000_________44_____888888_____|\n"
+		"+==================================================+\n"
+		"|                                                  |\n"
+		"|                                                  |\n"
+		"|   1 - Normal mode (4x4)                          |\n"
+		"|                                                  |\n"
+		"|                                                  |\n"
+		"|   2 - Long mode (5x5)                            |\n"
+		"|                                                  |\n"
+		"|                                                  |\n"
+		"+==================================================+\n");
+	refresh();
+	while (choice != '1' && choice != '2')
+		choice = getch();
+	clear();
+	refresh();
+	return (choice - 45);
+}
+
+int			main(void)
+{
+	int		size;
+
+	init_ncurses();
+	size = start_menu();
+
+	(void)size;
+//	play_the_game(size);
+
+	destroy_ncurses();
 	return (0);
 }
