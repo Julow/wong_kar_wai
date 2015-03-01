@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:07:23 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 13:37:08 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 14:37:51 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,26 @@
 
 static void		cell_color(int nb)
 {
+	int				i;
+
 	if (nb == 0)
-		attron(COLOR_PAIR(2));
-	else if (nb == 2)
-		attron(COLOR_PAIR(3));
-	else if (nb == 4)
-		attron(COLOR_PAIR(4));
-	else if (nb == 8)
-		attron(COLOR_PAIR(5));
-	else if (nb == 16)
-		attron(COLOR_PAIR(6));
-	else if (nb == 32 || nb == 64)
-		attron(COLOR_PAIR(7));
-	else if (nb == 128 || nb == 256)
-		attron(COLOR_PAIR(8));
-	else
-		attron(COLOR_PAIR(9));
+	{
+		attron(COLOR_PAIR(1));
+		return ;
+	}
+	i = 1;
+	while (++i < 13)
+		if ((nb /= 2) == 1)
+		{
+			attron(COLOR_PAIR(i));
+			return ;
+		}
+	attron(COLOR_PAIR(13));
 }
 
 static void		draw_rect(t_rect rect)
 {
-	attron(COLOR_PAIR(1));
+	attron(COLOR_PAIR(20));
 	rect.height += rect.y;
 	WPUT(rect.x, rect.y, "% *c", rect.width, ' ');
 	while (rect.y < rect.height)
@@ -78,7 +77,7 @@ void			draw_game(t_env *env)
 	cell.width = ft_max(env->win_width / env->map_size, 5);
 	cell.height = ft_max(env->win_height / env->map_size, 3);
 	clear();
-	attron(COLOR_PAIR(1));
+	attron(COLOR_PAIR(20));
 	WPUT(0, 0, "Score: %- *d", (cell.width * env->map_size) - 7, env->score);
 	i.y = -1;
 	while (++i.y < env->map_size)
