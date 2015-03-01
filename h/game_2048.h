@@ -6,11 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2015/03/01 15:21:53 by jaguillo         ###   ########.fr       */
-=======
-/*   Updated: 2015/03/01 15:32:40 by wide-aze         ###   ########.fr       */
->>>>>>> add1296e4c70fec9c2ea34d514a770eef64a208e
+/*   Updated: 2015/03/01 16:00:24 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +17,7 @@
 
 typedef enum	e_const
 {
-	WIN_VALUE = 8
+	WIN_VALUE = 2048
 }				t_const;
 
 typedef struct	s_env
@@ -31,7 +27,7 @@ typedef struct	s_env
 	int				score;
 	int				win_width;
 	int				win_height;
-	// t_bool			last_moved;
+	t_bool			last_moved;
 	t_bool			win;
 }				t_env;
 

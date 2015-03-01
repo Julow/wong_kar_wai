@@ -6,7 +6,7 @@
 #    By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/27 20:27:52 by jaguillo          #+#    #+#              #
-#    Updated: 2015/02/28 16:43:49 by jaguillo         ###   ########.fr        #
+#    Updated: 2015/03/01 16:02:49 by jaguillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,6 @@ all:
 $(NAME): $(O_FILES)
 	@gcc $(FLAGS) -o $@ $^ $(LINKS) && printf "\033[0;32m" || printf "\033[0;31m"
 	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
-	@echo "$(FLAGS)"
 
 # Compile a source file
 $(O_DIR)/%.o: $(C_DIR)/%.c
