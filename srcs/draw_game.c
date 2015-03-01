@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:07:23 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 15:56:27 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 17:32:15 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,18 @@ static void		draw_cell(t_rect cell, int nb)
 	draw_rect(tmp);
 }
 
+static void		draw_score(t_env *env)
+{
+	attron(COLOR_PAIR(20));
+	wmove(stdscr, 0, 0);
+	if (env->score <= env->best_score)
+		printw("% *c", env->win_width - printw("Score: %d ; Best: %d",
+			env->score, env->best_score), ' ');
+	else
+		printw("% *c", env->win_width - printw("Score: %d ; Best: %d",
+			env->score, env->score), ' ');
+}
+
 void			draw_game(t_env *env)
 {
 	t_rect			cell;
@@ -77,8 +89,7 @@ void			draw_game(t_env *env)
 	cell.width = ft_max(env->win_width / env->map_size, 5);
 	cell.height = ft_max(env->win_height / env->map_size, 3);
 	clear();
-	attron(COLOR_PAIR(20));
-	WPUT(0, 0, "Score: %- *d", (cell.width * env->map_size) - 7, env->score);
+	draw_score(env);
 	i.y = -1;
 	while (++i.y < env->map_size)
 	{

@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 16:36:44 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 17:03:50 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,13 @@ int				main(void)
 {
 	t_env			env;
 
-	env = (t_env){NULL, 0, 0, 0, 0, false, false};
+	env = (t_env){NULL, 0, 0, 0, 0, 0, false, false};
 	if (!is_power(WIN_VALUE, 2) || WIN_VALUE < 2)
 		return (ft_putstr_fd("Error: WIN_VALUE is not valid\n", 2), 1);
 	srand(time(NULL));
 	init_ncurses();
 	update_size(&env);
+	env.best_score = get_best_score();
 	start_menu(&env);
 	clear();
 	refresh();

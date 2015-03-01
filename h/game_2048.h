@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 16:15:20 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 17:38:39 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_env
 	int				**map;
 	int				map_size;
 	int				score;
+	int				best_score;
 	int				win_width;
 	int				win_height;
 	t_bool			last_moved;
@@ -62,6 +63,12 @@ void			action_right(t_env *env);
 */
 void			draw_game(t_env *env);
 t_bool			update_size(t_env *env);
+
+/*
+** best score
+*/
+int				get_best_score(void);
+void			set_best_score(int score);
 
 /*
 ** utils
