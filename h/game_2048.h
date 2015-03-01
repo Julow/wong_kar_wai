@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 16:00:24 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 16:15:20 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct	s_env
 # define WPUT(x,y,f,...)	wmove(stdscr, y, x), printw(f, ##__VA_ARGS__)
 
 # define MAP_GET(e,x,y)		(env->map[(y)][(x)])
+
+# define CHANCE_SPAWN_4		0.3
 
 /*
 ** menu
@@ -65,7 +67,7 @@ t_bool			update_size(t_env *env);
 ** utils
 */
 int				ft_rand(int min, int max);
-t_bool			ft_randbool(void);
+t_bool			ft_randbool(double chance);
 
 t_bool			is_power(int nb, int p);
 
