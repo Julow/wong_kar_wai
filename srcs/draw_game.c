@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:07:23 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 13:27:13 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 13:37:08 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,24 @@ static void		cell_color(int nb)
 	else
 		attron(COLOR_PAIR(9));
 }
-/*
+
 static void		draw_rect(t_rect rect)
 {
 	attron(COLOR_PAIR(1));
 	rect.height += rect.y;
+	WPUT(rect.x, rect.y, "% *c", rect.width, ' ');
 	while (rect.y < rect.height)
 	{
-		WPUT(cell.x, middle, "% *c%s% *c", len, ' ', str, len, ' ');
+		WPUT(rect.x, rect.y, " ");
+		WPUT(rect.x + rect.width - 1, rect.y, " ");
+		rect.y++;
 	}
+	WPUT(rect.x, rect.y, "% *c", rect.width, ' ');
 }
-*/
+
 static void		draw_cell(t_rect cell, int nb)
 {
-//	const t_rect	tmp = cell;
+	const t_rect	tmp = cell;
 	char			str[12];
 	int				len;
 	int				middle;
@@ -62,7 +66,7 @@ static void		draw_cell(t_rect cell, int nb)
 	WPUT(cell.x, cell.y, "% *c", cell.width, ' ');
 	len = (cell.width - ft_itoab(nb, str)) / 2;
 	WPUT(cell.x, middle, "% *c%s% *c", len, ' ', str, len, ' ');
-//	draw_rect(tmp);
+	draw_rect(tmp);
 }
 
 void			draw_game(t_env *env)
