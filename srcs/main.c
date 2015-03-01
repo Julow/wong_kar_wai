@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 20:00:26 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 20:27:48 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ static void		init_game(t_env *env, int size)
 		env->map[i] = ft_memalloc(S(int, size));
 	env->map_size = size;
 	env->best_score = get_best_score();
+	env->nb_rand = 1;
+	env->spawn_max = 2;
 }
 
 int				main(void)

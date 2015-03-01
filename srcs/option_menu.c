@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 18:30:07 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 20:01:49 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 20:19:28 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void			option_menu(t_env *env)
 		if (select == -1)
 			endwin(), exit(0);
 		else if (select == 0)
-			option_size_menu(env);/*
+			option_size_menu(env);
 		else if (select == 1)
-			option_difficulty_menu(env);*/
+			option_difficulty_menu(env);
 		else if (select == 2)
 		{
 			set_best_score(0);
