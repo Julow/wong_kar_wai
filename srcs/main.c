@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 19:28:28 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 20:00:26 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void		init_ncurses(void)
 	init_pairs();
 }
 
-static void		init_map(t_env *env, int size)
+static void		init_game(t_env *env, int size)
 {
 	int				i;
 
@@ -92,20 +92,20 @@ static void		init_map(t_env *env, int size)
 	while (++i < size)
 		env->map[i] = ft_memalloc(S(int, size));
 	env->map_size = size;
+	env->best_score = get_best_score();
 }
 
 int				main(void)
 {
 	t_env			env;
 
-	env = (t_env){NULL, 0, 0, 0, 0, 0, false, false, false};
+	ft_bzero(&env, sizeof(t_env));
 	if (!is_power(WIN_VALUE, 2) || WIN_VALUE < 2)
 		return (ft_putstr_fd("Error: WIN_VALUE is not valid\n", 2), 1);
 	srand(time(NULL));
 	init_ncurses();
-	init_map(&env, 4);
+	init_game(&env, 4);
 	update_size(&env);
-	env.best_score = get_best_score();
 	start_menu(&env);
 	clear();
 	refresh();

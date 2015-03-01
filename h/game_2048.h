@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 19:59:31 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 20:07:08 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ typedef struct	s_menu
 int				select_menu(t_env *env, t_menu *menu);
 
 void			start_menu(t_env *env);
+
 void			option_menu(t_env *env);
+void			option_size_menu(t_env *env);
+
 void			win_menu(t_env *env);
 void			end_menu(t_env *env);
 

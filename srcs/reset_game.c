@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 19:23:30 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 19:40:50 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 19:55:25 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void			reset_game(t_env *env)
 	clear_map(env);
 	env->score = 0;
 	env->win = false;
+	env->moved = false;
+	env->last_merged = false;
 	put_rand(env);
 	put_rand(env);
 	start_game(env);
