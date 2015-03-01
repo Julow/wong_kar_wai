@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   reset_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/28 11:26:18 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 14:56:35 by wide-aze         ###   ########.fr       */
+/*   Created: 2015/03/01 19:23:30 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/03/01 19:40:50 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
-#include <stdlib.h>
 
-static void		init_map(t_env *env, int size)
+static void		clear_map(t_env *env)
 {
 	int				i;
 
-	env->map = MAL(int*, size);
 	i = -1;
-	while (++i < size)
-		env->map[i] = ft_memalloc(S(int, size));
+	while (++i < env->map_size)
+		ft_bzero(env->map[i], S(int, env->map_size));
 }
 
-void			init_game(t_env *env, int size)
+void			reset_game(t_env *env)
 {
-	init_map(env, size);
-	env->map_size = size;
+	clear_map(env);
 	env->score = 0;
 	env->win = false;
 	put_rand(env);
 	put_rand(env);
 	start_game(env);
-	return ;
 }

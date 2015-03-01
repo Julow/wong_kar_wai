@@ -6,12 +6,13 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:06:47 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 15:53:45 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 19:37:44 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 #include <ncurses.h>
+#include <stdlib.h>
 
 static t_bool	game_alive(t_env *env)
 {
@@ -76,4 +77,6 @@ void			start_game(t_env *env)
 			return ;
 		draw_game(env);
 	}
+	endwin();
+	exit(1);
 }

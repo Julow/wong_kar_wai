@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 17:50:22 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 19:28:28 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,17 @@ static void		init_ncurses(void)
 	init_pairs();
 }
 
+static void		init_map(t_env *env, int size)
+{
+	int				i;
+
+	env->map = MAL(int*, size);
+	i = -1;
+	while (++i < size)
+		env->map[i] = ft_memalloc(S(int, size));
+	env->map_size = size;
+}
+
 int				main(void)
 {
 	t_env			env;
@@ -92,6 +103,7 @@ int				main(void)
 		return (ft_putstr_fd("Error: WIN_VALUE is not valid\n", 2), 1);
 	srand(time(NULL));
 	init_ncurses();
+	init_map(&env, 4);
 	update_size(&env);
 	env.best_score = get_best_score();
 	start_menu(&env);
