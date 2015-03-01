@@ -6,13 +6,13 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 10:40:30 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 16:15:02 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 20:01:09 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-void			put_rand(t_env *env)
+static void		put_one_rand(t_env *env)
 {
 	int		nb;
 	int		pos;
@@ -39,4 +39,13 @@ void			put_rand(t_env *env)
 			}
 		}
 	}
+}
+
+void			put_rand(t_env *env)
+{
+	int		i;
+
+	i = -1;
+	while (++i < env->nb_rand)
+		put_one_rand(env);
 }

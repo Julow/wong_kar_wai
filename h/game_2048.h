@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 19:40:54 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 19:59:31 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_env
 	int				best_score;
 	int				win_width;
 	int				win_height;
+	int				nb_rand;
 	t_bool			moved;
 	t_bool			last_merged;
 	t_bool			win;
