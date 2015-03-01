@@ -6,7 +6,7 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 10:16:05 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 10:44:57 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 11:33:56 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 static void		do_action(t_env *env, int x, int y, int save)
 {
-	while (x < env->map_size)
+	while (y < env->map_size)
 	{
-		y = env->map_size - 1;
-		while (y >= 0)
+		x = env->map_size - 1;
+		while (x >= 0)
 		{
-			save = y;
-			while (y < env->map_size - 1 && MAP_GET(env, x, y) > 0
-			&& MAP_GET(env, x, y + 1) == 0)
+			save = x;
+			while (x < env->map_size - 1 && MAP_GET(env, x, y) > 0
+			&& MAP_GET(env, x + 1, y) == 0)
 			{
-				MAP_GET(env, x, y + 1) = MAP_GET(env, x, y);
+				MAP_GET(env, x + 1, y) = MAP_GET(env, x, y);
 				MAP_GET(env, x, y) = 0;
-				y++;
+				x++;
 			}
-			if (y < env->map_size - 1 && MAP_GET(env, x, y) > 0
-			&& MAP_GET(env, x, y + 1) == MAP_GET(env, x, y))
+			if (x < env->map_size - 1 && MAP_GET(env, x, y) > 0
+			&& MAP_GET(env, x + 1, y) == MAP_GET(env, x, y))
 			{
 				MAP_GET(env, x, y) = 0;
-				MAP_GET(env, x, y + 1) *= 2;
-				env->score += MAP_GET(env, x, y + 1);
+				MAP_GET(env, x + 1, y) *= 2;
+				env->score += MAP_GET(env, x + 1, y);
 			}
-			y = save - 1;
+			x = save - 1;
 		}
-		x++;
+		y++;
 	}
 }
 
