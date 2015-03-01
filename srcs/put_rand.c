@@ -6,11 +6,23 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 10:40:30 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 20:01:09 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 20:38:47 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
+
+static int		spwan_extra(t_env *env)
+{
+	int		pow;
+	int		nb;
+
+	pow = ft_rand(1, env->spawn_max);
+	nb = 1;
+	while(--pow)
+		nb *= 2;
+	return (nb);
+}
 
 static void		put_one_rand(t_env *env)
 {
@@ -32,7 +44,7 @@ static void		put_one_rand(t_env *env)
 			{
 				if (pos == 0)
 				{
-					env->map[i][j] = ft_randbool(CHANCE_SPAWN_4) ? 4 : 2;
+					env->map[i][j] = ft_randbool(0.5) ? spawn_extra(env) : 2;
 					return ;
 				}
 				pos--;
