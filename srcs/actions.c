@@ -6,87 +6,57 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:35:44 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/02/28 19:57:10 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 10:05:25 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-
-/*
-** MAP_GET(l, c, e)
-*/
-
-/*static void		do_action(t_act *act, t_env *env)
+static void		do_action(t_env *env, int x, int y)
 {
 	int		save;
 
-	while (act.y < env->map_size)
+	while (x < env->map_size)
 	{
-		act.x = 0;
-		while  (act.x < env->map_size)
+		y = env->map_size - 1;
+		while  (y >= 0)
 		{
-			save = act.x;
-			while(act.x < env->map_size + 1 && MAP_GET(act.x + 1, act.y, env))
+			save = y;
+			while(y < env->map_size - 1 && MAP_GET(env, x, y) > 0 && MAP_GET(env, x, y + 1) == 0)
 			{
-				MAP_GET(act.x + 1, act.y, env) = MAP_GET(act.x, act.y, env);
-				MAP_GET(act.x, act.y, env) = 0;
+  				MAP_GET(env, x, y + 1) = MAP_GET(env, x, y);
+				MAP_GET(env, x, y) = 0;
+				y++;
 			}
-			act.x = save + 1;
+			if (y < env->map_size - 1 && MAP_GET(env, x, y) > 0 && MAP_GET(env, x, y + 1) == MAP_GET(env, x, y))
+			{
+				MAP_GET(env, x, y) = 0;
+				MAP_GET(env, x, y + 1) *= 2;
+				env->score += MAP_GET(env, x, y + 1);
+			}
+			y = save - 1;
 		}
-		y++;
+		x++;
 	}
-}*/
+}
 
 void	action_down(t_env *env)
 {
-	t_act	act;
-
-	act.dir = 'd';
-	act.x = 0;
-	act.y = env->map_size - 1;
-	act.prev = 0;
-
-	(void)act;
-//	do_action(&act, env);
+	do_action(env, 0, 0);
 	put_rand(env);
 }
 
 void	action_up(t_env *env)
 {
 	(void)env;
-/*	t_act	act;
-
-	act.dir = 'u';
-	act.x = 0;
-	act.y = 0;
-	act.prev = 0;
-	do_action(&act, env);
-	put_rand(env);*/
 }
 
 void	action_left(t_env *env)
 {
 	(void)env;
-/*	t_act	act;
-
-	act.dir = 'l';
-	act.x = 0;
-	act.y = 0;
-	act.prev = 0;
-	do_action(&act, env);
-	put_rand(env);*/
 }
 
 void	action_right(t_env *env)
 {
 	(void)env;
-/*	t_act	act;
-
-	act.dir = 'r';
-	act.x = env->map_size - 1;
-	act.y = 0;
-	act.prev = 0;
-	do_action(&act, env);
-	put_rand(env);*/
 }

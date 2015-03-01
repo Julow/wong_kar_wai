@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 19:02:59 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 10:03:03 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,6 @@ typedef enum	e_const
 {
 	WIN_VALUE = 2048
 }				t_const;
-
-typedef struct	s_act
-{
-	int				dir;
-	int				x;
-	int				y;
-	int				prev;
-}				t_act;
 
 typedef struct	s_env
 {
