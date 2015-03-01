@@ -6,7 +6,7 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:35:44 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 17:08:28 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 21:55:08 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static void		move_nb_down(t_env *env, int x, int *y)
 static void		merge_if_needed(t_env *env, int x, int y)
 {
 	if (y < env->map_size - 1 && MAP_GET(env, x, y) > 0
-	&& MAP_GET(env, x, y + 1) == MAP_GET(env, x, y) && !env->last_merged)
+	&& MAP_GET(env, x, y + 1) == MAP_GET(env, x, y) && env->last_merged > y)
 	{
 		MAP_GET(env, x, y) = 0;
 		MAP_GET(env, x, y + 1) *= 2;
 		env->score += MAP_GET(env, x, y + 1);
-		env->last_merged = true;
+		env->last_merged = y;
 		env->moved = true;
 	}
 }
@@ -42,7 +42,7 @@ static void		do_action(t_env *env, int x, int y, int save)
 	while (++x < env->map_size)
 	{
 		y = env->map_size - 1;
-		env->last_merged = false;
+		env->last_merged = env->map_size - 1;
 		while (y >= 0)
 		{
 			save = y;
