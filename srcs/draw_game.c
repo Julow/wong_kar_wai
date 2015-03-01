@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:07:23 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 14:37:51 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 15:56:27 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,5 @@ void			draw_game(t_env *env)
 		}
 	}
 	refresh();
+	attron(COLOR_PAIR(50));
 }

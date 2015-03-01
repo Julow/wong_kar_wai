@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 14:56:12 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 15:56:32 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 ** Colors
 ** Pair		Color	Nb		Hex			R		G		B
 ** -		17		white	ffffff		1000	1000	1000
-** 20		18		bg		bbada0		733		678		627
-** 1		19		0		ab9e92		670		619		572
+** 20		18		0		bbada0		733		678		627
+** 1		19		bg		ab9e92		670		619		572
 ** 2		20		2		eee4da		933		894		854
 ** 3		21		4		ede0c8		929		878		784
 ** 4		22		8		f2b179		949		694		474
@@ -54,7 +54,8 @@ static void		init_colors(void)
 
 static void		init_pairs(void)
 {
-	init_pair(1, COLOR_BLACK, 19);
+	init_pair(50, COLOR_WHITE, COLOR_BLACK);
+	init_pair(1, 18, 18);
 	init_pair(2, COLOR_BLACK, 20);
 	init_pair(3, COLOR_BLACK, 21);
 	init_pair(4, 17, 22);
@@ -67,7 +68,7 @@ static void		init_pairs(void)
 	init_pair(11, 17, 29);
 	init_pair(12, 17, 30);
 	init_pair(13, 17, 31);
-	init_pair(20, COLOR_BLACK, 18);
+	init_pair(20, COLOR_BLACK, 19);
 }
 
 static void		init_ncurses(void)

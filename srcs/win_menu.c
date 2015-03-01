@@ -6,7 +6,7 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 14:13:02 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 15:14:47 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 15:57:29 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		print_menu(t_env *env)
 		"|                                                  |\n"
 		"|                   YOU WIN !!                     |\n"
 		"|                                                  |\n"
-		"|                You score is % -20d|\n"
+		"|                You score is % -20d |\n"
 		"|                                                  |\n"
 		"|  Press ESC to quit / ENTER to continue the game  |\n"
 		"|                                                  |\n"
@@ -48,7 +48,7 @@ void			win_menu(t_env *env)
 		choice = getch();
 		if (choice == 27)
 			return ;
-		else if (choice == '1')
+		else if (choice == '\n')
 		{
 			start_game(env);
 			return ;
