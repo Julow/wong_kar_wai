@@ -6,7 +6,7 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 10:40:30 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 10:47:43 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 13:49:58 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			put_rand(t_env *env)
 
 	if ((nb = count_void_cases(env)) == 0)
 		return ;
-	pos = ft_rand(0, nb);
+	pos = ft_rand(0, nb - 1);
 	i = -1;
 	while (++i < env->map_size)
 	{
