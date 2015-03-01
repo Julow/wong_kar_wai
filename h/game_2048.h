@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 20:07:08 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 20:32:18 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_env
 	int				win_width;
 	int				win_height;
 	int				nb_rand;
+	int				spawn_max;
 	t_bool			moved;
 	t_bool			last_merged;
 	t_bool			win;
@@ -46,8 +47,6 @@ typedef struct	s_menu
 
 # define MAP_GET(e,x,y)		(env->map[(y)][(x)])
 
-# define CHANCE_SPAWN_4		0.3
-
 /*
 ** menu
 */
@@ -57,6 +56,7 @@ void			start_menu(t_env *env);
 
 void			option_menu(t_env *env);
 void			option_size_menu(t_env *env);
+void			option_difficulty_menu(t_env *env);
 
 void			win_menu(t_env *env);
 void			end_menu(t_env *env);
