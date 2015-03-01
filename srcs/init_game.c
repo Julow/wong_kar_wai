@@ -6,7 +6,7 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 11:26:18 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/02/28 19:03:05 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 14:41:26 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void			init_game(t_env *env, int size)
 	init_map(env, size);
 	env->map_size = size;
 	env->score = 0;
+	env->win_state = false;
+	put_rand(env);
+	put_rand(env);
 	start_game(env);
 	return ;
 }
