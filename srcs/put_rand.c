@@ -6,20 +6,20 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 10:40:30 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 20:38:47 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 20:44:10 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-static int		spwan_extra(t_env *env)
+static int		spawn_extra(t_env *env)
 {
 	int		pow;
 	int		nb;
 
 	pow = ft_rand(1, env->spawn_max);
 	nb = 1;
-	while(--pow)
+	while (pow--)
 		nb *= 2;
 	return (nb);
 }

@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 20:19:48 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 20:32:12 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 20:43:26 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void			option_difficulty_menu(t_env *env)
 	"3 (Hard)        [2] [4] [8]",
 	"4 (Extreme)     [2] [4] [8] x2",
 	"Cancel"};
-	menu = (t_menu){(char**)choices, 0, 13, NULL};
+	menu = (t_menu){(char**)choices, 0, 5, NULL};
 	select = select_menu(env, &menu);
 	if (select == -1)
 		endwin(), exit(0);
