@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   count_void_cases.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/28 11:26:18 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 14:56:35 by wide-aze         ###   ########.fr       */
+/*   Created: 2015/03/01 14:45:59 by wide-aze          #+#    #+#             */
+/*   Updated: 2015/03/01 14:46:36 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
-#include <stdlib.h>
 
-static void		init_map(t_env *env, int size)
+int		count_void_cases(t_env *env)
 {
-	int				i;
+	int		i;
+	int		j;
+	int		count;
 
-	env->map = MAL(int*, size);
+	count = 0;
 	i = -1;
-	while (++i < size)
-		env->map[i] = ft_memalloc(S(int, size));
-}
-
-void			init_game(t_env *env, int size)
-{
-	init_map(env, size);
-	env->map_size = size;
-	env->score = 0;
-	env->win = false;
-	put_rand(env);
-	put_rand(env);
-	start_game(env);
-	return ;
+	while (++i < env->map_size)
+	{
+		j = -1;
+		while (++j < env->map_size)
+		{
+			if (env->map[i][j] == 0)
+				count++;
+		}
+	}
+	return (count);
 }

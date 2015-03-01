@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 14:41:23 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 15:14:53 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef enum	e_const
 {
-	WIN_VALUE = 2048
+	WIN_VALUE = 8
 }				t_const;
 
 typedef struct	s_env
@@ -35,9 +35,11 @@ typedef struct	s_env
 # define MAP_GET(e,x,y)		(env->map[(y)][(x)])
 
 /*
-** start_menu.c
+** menus.c
 */
 void			start_menu(t_env *env);
+void			win_menu(t_env *env);
+void			end_menu(t_env *env);
 
 /*
 ** init_game.c
@@ -49,6 +51,7 @@ void			init_game(t_env *env, int size);
 ** w
 */
 void			start_game(t_env *env);
+int				count_void_cases(t_env *env);
 void			put_rand(t_env *env);
 void			action_down(t_env *env);
 void			action_up(t_env *env);

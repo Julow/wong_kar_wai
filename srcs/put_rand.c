@@ -6,31 +6,11 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 10:40:30 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 13:49:58 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 14:55:39 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
-
-static int		count_void_cases(t_env *env)
-{
-	int		i;
-	int		j;
-	int		count;
-
-	count = 0;
-	i = -1;
-	while (++i < env->map_size)
-	{
-		j = -1;
-		while (++j < env->map_size)
-		{
-			if (env->map[i][j] == 0)
-				count++;
-		}
-	}
-	return (count);
-}
 
 void			put_rand(t_env *env)
 {

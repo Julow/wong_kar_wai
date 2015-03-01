@@ -6,14 +6,14 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 14:41:10 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 14:41:11 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 15:08:44 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 #include <ncurses.h>
 
-static void		print_menu(void)
+static void		print_menu(t_env *env)
 {
 	clear();
 	printw("+==================================================+\n"
@@ -24,27 +24,27 @@ static void		print_menu(void)
 		"|_____222222_____0000000_________44_____888888_____|\n"
 		"+==================================================+\n"
 		"|                                                  |\n"
-		"|                   YOU WIN !!                     |\n"
+		"|                   YOU LOSE!!                     |\n"
 		"|                                                  |\n"
 		"|                You score is % -20d|\n"
 		"|                                                  |\n"
 		"|  Press ESC to quit / ENTER to continue the game  |\n"
 		"|                                                  |\n"
 		"|                                                  |\n"
-		"+==================================================+\n", );
+		"+==================================================+\n", env->score);
 	refresh();
 }
 
-void			win_menu(t_env *env)
+void			end_menu(t_env *env)
 {
 	int				choice;
 
-	print_menu();
+	print_menu(env);
 	choice = 0;
 	while (1)
 	{
 		if (update_size(env))
-			print_menu();
+			print_menu(env);
 		choice = getch();
 		if (choice == 27)
 			return ;

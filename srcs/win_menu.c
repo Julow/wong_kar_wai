@@ -6,7 +6,7 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 14:13:02 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 14:41:28 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 15:14:47 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void			win_menu(t_env *env)
 {
 	int				choice;
 
-	print_menu();
+	print_menu(env);
 	choice = 0;
 	while (1)
 	{
@@ -48,7 +48,7 @@ void			win_menu(t_env *env)
 		choice = getch();
 		if (choice == 27)
 			return ;
-		else if (choice == KEY_ENTER)
+		else if (choice == '1')
 		{
 			start_game(env);
 			return ;

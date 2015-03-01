@@ -6,14 +6,32 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:06:47 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 14:41:24 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 15:19:50 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 #include <ncurses.h>
 
-void
+static t_bool	check_game(t_env *env)
+{
+	int		i;
+	int		j;
+
+	if (count_void_cases(env) == 0)
+		return (end_menu(env), true);
+	i = -1;
+	while (!env->win && ++i < env->map_size)
+	{
+		j = -1;
+		while (++j < env->map_size)
+		{
+			if (env->map[i][j] == WIN_VALUE)
+				return (env->win = true, win_menu(env), true);
+		}
+	}
+	return (false);
+}
 
 void			start_game(t_env *env)
 {
