@@ -6,42 +6,57 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 10:15:57 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 11:18:32 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 17:08:50 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
+static void		move_nb_left(t_env *env, int *x, int y)
+{
+	while (*x > 0 && MAP_GET(env, *x, y) > 0
+	&& MAP_GET(env, *x - 1, y) == 0)
+	{
+		MAP_GET(env, *x - 1, y) = MAP_GET(env, *x, y);
+		MAP_GET(env, *x, y) = 0;
+		(*x)--;
+		env->moved = true;
+	}
+}
+
+static void		merge_if_needed(t_env *env, int x, int y)
+{
+	if (x > 0 && MAP_GET(env, x, y) > 0
+	&& MAP_GET(env, x - 1, y) == MAP_GET(env, x, y) && !env->last_merged)
+	{
+		MAP_GET(env, x, y) = 0;
+		MAP_GET(env, x - 1, y) *= 2;
+		env->score += MAP_GET(env, x - 1, y);
+		env->last_merged = true;
+		env->moved = true;
+	}
+}
+
 static void		do_action(t_env *env, int x, int y, int save)
 {
-	while (y < env->map_size)
+	while (++y < env->map_size)
 	{
 		x = 0;
+		env->last_merged = false;
 		while (x <= env->map_size - 1)
 		{
 			save = x;
-			while (x > 0 && MAP_GET(env, x, y) > 0
-			&& MAP_GET(env, x - 1, y) == 0)
-			{
-				MAP_GET(env, x - 1, y) = MAP_GET(env, x, y);
-				MAP_GET(env, x, y) = 0;
-				x--;
-			}
-			if (x > 0 && MAP_GET(env, x, y) > 0
-			&& MAP_GET(env, x - 1, y) == MAP_GET(env, x, y))
-			{
-				MAP_GET(env, x, y) = 0;
-				MAP_GET(env, x - 1, y) *= 2;
-				env->score += MAP_GET(env, x - 1, y);
-			}
+			move_nb_left(env, &x, y);
+			merge_if_needed(env, x, y);
 			x = save + 1;
 		}
-		y++;
 	}
 }
 
 void			action_left(t_env *env)
 {
-	do_action(env, 0, 0, 0);
-	put_rand(env);
+	env->moved = false;
+	do_action(env, 0, -1, 0);
+	if (env->moved)
+		put_rand(env);
 }
