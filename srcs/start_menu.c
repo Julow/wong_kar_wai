@@ -6,14 +6,14 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 11:44:06 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/02/28 18:26:58 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 17:45:37 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 #include <ncurses.h>
 
-static void		print_menu(void)
+static void		print_menu(t_env *env)
 {
 	clear();
 	printw("+==================================================+\n"
@@ -24,6 +24,8 @@ static void		print_menu(void)
 		"|_____222222_____0000000_________44_____888888_____|\n"
 		"+==================================================+\n"
 		"|                                                  |\n"
+		"|   Best score: % -35d|\n"
+		"|                                                  |\n"
 		"|                                                  |\n"
 		"|   1 - Normal mode (4x4)                          |\n"
 		"|                                                  |\n"
@@ -31,7 +33,8 @@ static void		print_menu(void)
 		"|   2 - Long mode (5x5)                            |\n"
 		"|                                                  |\n"
 		"|                                                  |\n"
-		"+==================================================+\n");
+		"+==================================================+\n",
+		env->best_score);
 	refresh();
 }
 
@@ -39,12 +42,12 @@ void			start_menu(t_env *env)
 {
 	int				choice;
 
-	print_menu();
+	print_menu(env);
 	choice = 0;
 	while (1)
 	{
 		if (update_size(env))
-			print_menu();
+			print_menu(env);
 		choice = getch();
 		if (choice == '1')
 			init_game(env, 4);

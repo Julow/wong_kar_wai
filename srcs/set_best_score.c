@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rand.c                                          :+:      :+:    :+:   */
+/*   set_best_score.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/01 10:41:08 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 16:36:31 by jaguillo         ###   ########.fr       */
+/*   Created: 2015/03/01 16:58:37 by jaguillo          #+#    #+#             */
+/*   Updated: 2015/03/01 17:42:49 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
-#include <stdlib.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
-int				ft_rand(int min, int max)
+void			set_best_score(int score)
 {
-	return (rand() % (max - min + 1) + min);
+	int				fd;
+
+	fd = open("best_score.txt", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (fd == -1)
+		return ;
+	ft_putnbr_fd(score, fd);
+	ft_putchar_fd('\n', fd);
+	close(fd);
 }

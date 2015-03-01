@@ -6,7 +6,7 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 10:40:30 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 14:55:39 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 16:15:02 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void			put_rand(t_env *env)
 			{
 				if (pos == 0)
 				{
-					env->map[i][j] = ft_randbool() ? 4 : 2;
+					env->map[i][j] = ft_randbool(CHANCE_SPAWN_4) ? 4 : 2;
 					return ;
 				}
 				pos--;

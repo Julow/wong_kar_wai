@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:29:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 17:09:16 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 17:50:06 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_env
 	int				**map;
 	int				map_size;
 	int				score;
+	int				best_score;
 	int				win_width;
 	int				win_height;
 	t_bool			moved;
@@ -35,6 +36,8 @@ typedef struct	s_env
 # define WPUT(x,y,f,...)	wmove(stdscr, y, x), printw(f, ##__VA_ARGS__)
 
 # define MAP_GET(e,x,y)		(env->map[(y)][(x)])
+
+# define CHANCE_SPAWN_4		0.3
 
 /*
 ** menu
@@ -63,10 +66,16 @@ void			draw_game(t_env *env);
 t_bool			update_size(t_env *env);
 
 /*
+** best score
+*/
+int				get_best_score(void);
+void			set_best_score(int score);
+
+/*
 ** utils
 */
 int				ft_rand(int min, int max);
-t_bool			ft_randbool(void);
+t_bool			ft_randbool(double chance);
 
 t_bool			is_power(int nb, int p);
 
