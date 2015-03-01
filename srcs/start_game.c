@@ -6,20 +6,38 @@
 /*   By: wide-aze <wide-aze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 15:06:47 by wide-aze          #+#    #+#             */
-/*   Updated: 2015/03/01 15:19:50 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/03/01 15:53:45 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 #include <ncurses.h>
 
+static t_bool	game_alive(t_env *env)
+{
+	t_pt	pt;
+
+	pt.y = -1;
+	while (++pt.y < env->map_size)
+	{
+		pt.x = -1;
+		while (++pt.x < env->map_size)
+		{
+			if (MAP_GET(env, pt.x, pt.y) == 0 || ((pt.y + 1) < env->map_size
+				&& MAP_GET(env, pt.x, pt.y) == MAP_GET(env, pt.x, pt.y + 1))
+				|| ((pt.x + 1) < env->map_size
+				&& MAP_GET(env, pt.x, pt.y) == MAP_GET(env, pt.x + 1, pt.y)))
+				return (false);
+		}
+	}
+	return (true);
+}
+
 static t_bool	check_game(t_env *env)
 {
 	int		i;
 	int		j;
 
-	if (count_void_cases(env) == 0)
-		return (end_menu(env), true);
 	i = -1;
 	while (!env->win && ++i < env->map_size)
 	{
@@ -30,6 +48,8 @@ static t_bool	check_game(t_env *env)
 				return (env->win = true, win_menu(env), true);
 		}
 	}
+	if (game_alive(env))
+		return (end_menu(env), true);
 	return (false);
 }
 
@@ -37,6 +57,8 @@ void			start_game(t_env *env)
 {
 	int		key;
 
+	if (check_game(env))
+		return ;
 	draw_game(env);
 	while ((key = getch()) != 27)
 	{
