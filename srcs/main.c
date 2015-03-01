@@ -6,12 +6,69 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:32:42 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/03/01 13:08:08 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/03/01 14:33:05 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 #include <ncurses.h>
+
+/*
+** Colors
+** Pair		Color	Nb		Hex			R		G		B
+** -		17		white	ffffff		1000	1000	1000
+** 20		18		bg		bbada0		733		678		627
+** 1		19		0		ab9e92		670		619		572
+** 2		20		2		eee4da		933		894		854
+** 3		21		4		ede0c8		929		878		784
+** 4		22		8		f2b179		949		694		474
+** 5		23		16		f59563		960		584		388
+** 6		24		32		f67c5f		964		486		372
+** 7		25		64		f65e3b		964		368		231
+** 8		26		128		edcf72		929		811		447
+** 9		27		256		edcc61		929		800		380
+** 10		28		512		edc850		929		784		313
+** 11		29		1024	edc53f		929		772		247
+** 12		30		2048	edc22e		929		760		180
+** 13		31		+		3c3a32		235		227		196
+*/
+
+static void		init_colors(void)
+{
+	init_color(17, 1000, 1000, 1000);
+	init_color(18, 733, 678, 627);
+	init_color(19, 670, 619, 572);
+	init_color(20, 933, 894, 854);
+	init_color(21, 929, 878, 784);
+	init_color(22, 949, 694, 474);
+	init_color(23, 960, 584, 388);
+	init_color(24, 964, 486, 372);
+	init_color(25, 964, 368, 231);
+	init_color(26, 929, 811, 447);
+	init_color(27, 929, 800, 380);
+	init_color(28, 929, 784, 313);
+	init_color(29, 929, 772, 247);
+	init_color(30, 929, 760, 180);
+	init_color(31, 235, 227, 196);
+}
+
+static void		init_pairs(void)
+{
+	init_pair(1, COLOR_BLACK, 19);
+	init_pair(2, COLOR_BLACK, 20);
+	init_pair(3, COLOR_BLACK, 21);
+	init_pair(4, 17, 22);
+	init_pair(5, 17, 23);
+	init_pair(6, 17, 24);
+	init_pair(7, 17, 25);
+	init_pair(8, 17, 26);
+	init_pair(9, 17, 27);
+	init_pair(10, 17, 28);
+	init_pair(11, 17, 29);
+	init_pair(12, 17, 30);
+	init_pair(13, 17, 31);
+	init_pair(20, COLOR_BLACK, 18);
+}
 
 static void		init_ncurses(void)
 {
@@ -19,23 +76,8 @@ static void		init_ncurses(void)
 	noecho();
 	keypad(stdscr, TRUE);
 	start_color();
-	init_color(9, 1000, 1000, 1000);
-	init_color(10, 466, 431, 396);
-	init_color(11, 566, 531, 500);
-	init_color(12, 933, 878, 784);
-	init_color(13, 949, 694, 474);
-	init_color(14, 960, 584, 388);
-	init_color(15, 960, 400, 350);
-	init_color(16, 960, 400, 350);
-	init_color(17, 960, 400, 350);
-	init_pair(1, COLOR_BLACK, 10);
-	init_pair(2, COLOR_BLACK, 11);
-	init_pair(3, COLOR_BLACK, 12);
-	init_pair(4, 9, 13);
-	init_pair(5, 9, 14);
-	init_pair(6, 9, 15);
-	init_pair(7, 9, 16);
-	init_pair(8, 9, 17);
+	init_colors();
+	init_pairs();
 }
 
 int				main(void)
